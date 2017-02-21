@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'poules-leadership-series.fr',
-	'username' => 'root',
-	'password' => 'root',
+	'hostname' => 'localhost',
+	'username' => 'julien',
+	'password' => '',
 	'database' => 'KFC',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
