@@ -14,8 +14,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	Page home
 
 	<br />
-	<div class="col-6">
-	<h4>liste des tournois :</h4>
+	<div class="col-8">
+	<h4>liste des tournoi :</h4>
 	<table class="table">
 	<thead>
 		<tr>
@@ -25,6 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<th>date</th>
 		<th>createur</th>
 		<th>description</th>
+		<th>matchs</th>
+		<th>actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -36,11 +38,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<th><?php echo $tournoi['date']; ?></th>
 			<th><?php echo $tournoi['created_by']; ?></th>
 			<th><?php echo $tournoi['description']; ?></th>
+			<th><?php echo $tournoi['matches'];?></th>
+			<th><a href="<?php echo site_url('home/show_tournament').'/'.$tournoi['id']; ?>">Apercu</a></th>
 		</tr>
 	<?php endforeach; ?>
 		</tbody>
 	</table>
-	<a href="<?php echo site_url('home/add_tournament'); ?>" class="btn btn-success">Creer un tournois</a>
+	<a href="<?php echo site_url('home/add_tournament'); ?>" class="btn btn-success">Creer un tournoi</a>
 	</div>
 </div>
 

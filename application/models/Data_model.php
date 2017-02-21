@@ -7,17 +7,27 @@ Class Data_model extends CI_Model
   /*
     Le modéle dans le MVC est la partie qui traite les données
   */
-  
+
   // Insertion de données dans une table transmise en paramétre
   //Attention au formatage de $data qui doit correspondre à la structure de la table
   public function insert($table,$data){
       $this->db->insert($table, $data);
   }
 
+  public function inc_matches_count($tournament_id){
+    $this->db->where('id', $tournament_id);
+    $this->db->set('matches', 'matches+1', FALSE);
+    $this->db->update('tournament');
+  }
+
   // Récupérer les tournois
-  public function get_tournois(){
+  public function get_tournois($tournament_id = null){
     $this->db->from('tournament');
-    //$this->db->where('visible',1);
+    if($tournament_id){
+      $this->db->where('id',$tournament_id);
+      $query = $this->db->get();
+      return $query->row_array();
+    }
     $query = $this->db->get();
     return $query->result_array();
   }
