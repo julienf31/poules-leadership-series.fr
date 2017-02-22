@@ -7,6 +7,7 @@ class Home extends CI_Controller {
 	{
 		$data['test']='test';
 		$data['tournois'] = $this->data_model->get_tournois();
+		$data['nbteams'] = $this->data_model->get_nb_teams();
 		$this->load->view('home', $data);
 	}
 
@@ -48,6 +49,30 @@ class Home extends CI_Controller {
 		$nbteams = $this->input->post('nbteams');
 		$this->data_model->update('tournament','nbteams',$nbteams,$tournament_id);
 		redirect('home/index');
+	}
+
+	public function teams(){
+		
+	}
+
+	public function teams_tournament($tournament_id){
+		$data['nbteams'] = $this->data_model->get_nb_teams();
+		$data['teams'] = $this->data_model->get_teams();
+		$data['tournament'] = $this->data_model->get_tournois($tournament_id);
+		$this->load->view('teams_tournament', $data);
+	}
+
+	public function tournament_teams_list_b($tournament_id){
+		$data['nbteams'] = $this->data_model->get_nb_teams();
+		$data['teams'] = $this->data_model->get_teams();
+		$data['tournament'] = $this->data_model->get_tournois($tournament_id);
+		for($i = 0; $i < $data['tournament']['nbteams'] ;$i++){
+			$data = array(
+				'tournament_id' => $tournament_id,
+				'team_id' => $this->input->post('team-'.$i+1)
+			);
+			$this->data_model->insert('participants', $data);
+		}
 	}
 
 	// Ajout de matches

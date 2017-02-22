@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div id="container">
 	Page home
-
+En tout, il y a : <?php echo $nbteams; ?> équipes<br/>
 	<br />
 	<div class="col-8">
 	<h4>liste des tournoi :</h4>

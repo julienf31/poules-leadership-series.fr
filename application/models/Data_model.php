@@ -20,6 +20,16 @@ Class Data_model extends CI_Model
     $this->db->update($table);
   }
 
+  public function get_nb_teams(){
+    $result = $this->db->count_all('team');
+    return $result;
+  }
+
+  public function get_teams(){
+    $result = $this->db->get('team');
+    return $result->result_array();
+  }
+
   public function inc_matches_count($tournament_id){
     $this->db->where('id', $tournament_id);
     $this->db->set('matches', 'matches+1', FALSE);
