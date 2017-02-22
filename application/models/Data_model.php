@@ -14,6 +14,12 @@ Class Data_model extends CI_Model
       $this->db->insert($table, $data);
   }
 
+  public function update($table,$column,$val,$tournament_id){
+    $this->db->set($column, $val);
+    $this->db->where('id', $tournament_id);
+    $this->db->update($table);
+  }
+
   public function inc_matches_count($tournament_id){
     $this->db->where('id', $tournament_id);
     $this->db->set('matches', 'matches+1', FALSE);

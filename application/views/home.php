@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<th>date</th>
 		<th>createur</th>
 		<th>description</th>
-		<th>matchs</th>
+		<th>equipes</th>
 		<th>actions</th>
 		</tr>
 	</thead>
@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<th><?php echo $tournoi['date']; ?></th>
 			<th><?php echo $tournoi['created_by']; ?></th>
 			<th><?php echo $tournoi['description']; ?></th>
-			<th><?php echo $tournoi['matches'];?></th>
+			<th><?php echo $tournoi['nbteams'];?></th>
 			<th><a href="<?php echo site_url('home/show_tournament').'/'.$tournoi['id']; ?>">Apercu</a></th>
 		</tr>
 	<?php endforeach; ?>

@@ -12,10 +12,12 @@
   <li class="list-group-item">Description du tournois : <?php echo $tournament['description']; ?></li>
   <li class="list-group-item">Date : <?php echo $tournament['date']; ?></li>
   <li class="list-group-item">Mode du tournois : <?php echo $tournament['mode']; ?></li>
+  <li class="list-group-item">Nombres d'équipes : <?php echo $tournament['nbteams']; ?></li>
 </ul>
 <div class="row">
-    <a href="<?php echo site_url('home/index'); ?>" class="btn btn-danger">Retour</a>
-    <a href="<?php echo site_url('home/index'); ?>" class="btn btn-warning">Lancer le tournois</a>
+    <a href="<?php echo site_url('home/index'); ?>" class="btn btn-danger mx-3 my-3">Retour</a>
+    <a href="<?php echo site_url('home/launch_tournament/').'/'.$tournament['id']; ?>" class="btn btn-warning mx-3 my-3">Lancer le tournois</a>
+    <a href="<?php echo site_url('home/launch_tournament/').'/'.$tournament['id']; ?>" class="btn btn-info mx-3 my-3">Gestion des équipes</a>
 </div>
 
 <h3>Détail des matchs du tournois :</h3>

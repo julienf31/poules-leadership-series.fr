@@ -38,6 +38,18 @@ class Home extends CI_Controller {
 		redirect('home/index');
 	}
 
+	public function launch_tournament($tournament_id){
+		$data['disciplines'] = $this->data_model->get_disciplines();
+		$data['tournament'] = $this->data_model->get_tournois($tournament_id);
+		$this->load->view('launch_tournament', $data);
+	}
+
+	public function launch_tournament_b($tournament_id){
+		$nbteams = $this->input->post('nbteams');
+		$this->data_model->update('tournament','nbteams',$nbteams,$tournament_id);
+		redirect('home/index');
+	}
+
 	// Ajout de matches
 	public function add_matches($tournament_id){
 		$data['tournament'] = $this->data_model->get_tournois($tournament_id);
