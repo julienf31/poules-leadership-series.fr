@@ -13,7 +13,11 @@
   <li class="list-group-item">Date : <?php echo $tournament['date']; ?></li>
   <li class="list-group-item">Mode du tournois : <?php echo $tournament['mode']; ?></li>
 </ul>
-<a href="<?php echo site_url('home/index'); ?>" class="btn btn-danger">Retour</a>
+<div class="row">
+    <a href="<?php echo site_url('home/index'); ?>" class="btn btn-danger">Retour</a>
+    <a href="<?php echo site_url('home/index'); ?>" class="btn btn-warning">Lancer le tournois</a>
+</div>
+
 <h3>Détail des matchs du tournois :</h3>
 <?php if(!$tournament['matchs']): ?>
 Pas de matchs dans ce tournoi
