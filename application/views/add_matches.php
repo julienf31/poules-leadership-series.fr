@@ -19,17 +19,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <input type="text" class="form-control" name="match_name" placeholder="Nom du match">
       </div>
       <div class="form-group">
-      <label for="usr">Discipline du tournois :</label>
-        <select class="custom-select" name="mode">
-            <?php foreach($disciplines as $row => $discipline): ?>
-            <option value="<?php echo $discipline['name']; ?>"><?php echo $discipline['name']; ?></option>
+      <label for="usr">Équipes :</label>
+        <select class="custom-select" name="team1">
+            <?php foreach($teams as $row => $team): ?>
+            <option value="<?php echo $team['name']; ?>"><?php echo $team['name']; ?></option>
+            <?php endforeach; ?>
+        </select>
+        VS <select class="custom-select" name="team2">
+            <?php foreach($teams as $row => $team): ?>
+            <option value="<?php echo $team['name']; ?>"><?php echo $team['name']; ?></option>
             <?php endforeach; ?>
         </select>
         </div>
-      <div class="form-group">
-        <label for="usr">Description du tournois :</label>
-        <textarea type="text" class="form-control" name="tournament_description" placeholder="Description du tournois"></textarea>
-      </div>
       <button type="submit" class="btn btn-success">Créer</button>
     </form>
     </div>

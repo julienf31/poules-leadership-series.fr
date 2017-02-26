@@ -30,6 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <label for="usr">Description du tournois :</label>
         <textarea type="text" class="form-control" name="tournament_description" placeholder="Description du tournois"></textarea>
       </div>
+          <a href="<?php echo site_url('home/index'); ?>" class="btn btn-danger mx-3 my-3">Retour</a>
       <button type="submit" class="btn btn-success">Créer</button>
     </form>
     </div>

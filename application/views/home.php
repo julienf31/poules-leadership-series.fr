@@ -25,7 +25,7 @@ En tout, il y a : <?php echo $nbteams; ?> équipes<br/>
 		<th>date</th>
 		<th>createur</th>
 		<th>description</th>
-		<th>equipes</th>
+		<th>teams</th>
 		<th>actions</th>
 		</tr>
 	</thead>
@@ -45,6 +45,34 @@ En tout, il y a : <?php echo $nbteams; ?> équipes<br/>
 		</tbody>
 	</table>
 	<a href="<?php echo site_url('home/add_tournament'); ?>" class="btn btn-success">Creer un tournoi</a>
+	
+
+	<h4>liste des équipes :</h4>
+	<table class="table">
+	<thead>
+		<tr>
+		<th>#</th>
+		<th>nom</th>
+		<th>createur</th>
+		<th>matchs gagnés</th>
+		<th>tournois gagnés</th>
+		<th>actions</th>
+		</tr>
+	</thead>
+	<tbody>
+	<?php foreach($teams as $row => $team): ?>
+		<tr>
+			<th><?php echo $row+1; ?></th>
+			<th><?php echo $team['name']; ?></th>
+			<th><?php echo $team['owner']; ?></th>
+			<th><?php echo $team['stats_win_match']; ?></th>
+			<th><?php echo $team['stats_win_tournament']; ?></th>
+			<th><a href="<?php echo site_url('home/show_tournament').'/'.$tournoi['id']; ?>">Apercu</a></th>
+		</tr>
+	<?php endforeach; ?>
+		</tbody>
+	</table>
+		<a href="<?php echo site_url('home/add_team'); ?>" class="btn btn-success disabled">Creer une équipe</a>
 	</div>
 </div>
 

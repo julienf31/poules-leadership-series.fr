@@ -20,6 +20,12 @@ Class Data_model extends CI_Model
     $this->db->update($table);
   }
 
+  public function remove_team($tournament_id){
+    $this->db->where('tournament_id', $tournament_id);
+    $this->db->from('participants');
+    $this->db->delete('participants');
+  }
+
   public function get_nb_teams(){
     $result = $this->db->count_all('team');
     return $result;
@@ -28,6 +34,15 @@ Class Data_model extends CI_Model
   public function get_teams(){
     $result = $this->db->get('team');
     return $result->result_array();
+  }
+
+  public function get_teams_tournament($tournament_id){
+    $this->db->where('tournament_id', $tournament_id);
+    $this->db->from('participants');
+    $this->db->group_by('team_id');
+    $this->db->join('team', 'team.id = participants.team_id');
+    $query = $this->db->get();
+    return $query->result_array();
   }
 
   public function inc_matches_count($tournament_id){

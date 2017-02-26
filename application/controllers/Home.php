@@ -5,8 +5,8 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$data['test']='test';
 		$data['tournois'] = $this->data_model->get_tournois();
+		$data['teams'] = $this->data_model->get_teams();
 		$data['nbteams'] = $this->data_model->get_nb_teams();
 		$this->load->view('home', $data);
 	}
@@ -59,6 +59,7 @@ class Home extends CI_Controller {
 		$data['nbteams'] = $this->data_model->get_nb_teams();
 		$data['teams'] = $this->data_model->get_teams();
 		$data['tournament'] = $this->data_model->get_tournois($tournament_id);
+		$data['participants'] = $this->data_model->get_teams_tournament($tournament_id);
 		$this->load->view('teams_tournament', $data);
 	}
 
@@ -66,18 +67,24 @@ class Home extends CI_Controller {
 		$data['nbteams'] = $this->data_model->get_nb_teams();
 		$data['teams'] = $this->data_model->get_teams();
 		$data['tournament'] = $this->data_model->get_tournois($tournament_id);
-		for($i = 0; $i < $data['tournament']['nbteams'] ;$i++){
+		$nbteams = intval($data['tournament']['nbteams']);
+		// Vidage SQL
+		$this->data_model->remove_team($tournament_id);
+		for($i = 1; $i <= $nbteams ;$i++){
+			$input = "team-$i";
 			$data = array(
 				'tournament_id' => $tournament_id,
-				'team_id' => $this->input->post('team-'.$i+1)
+				'team_id' => $this->input->post($input)
 			);
 			$this->data_model->insert('participants', $data);
 		}
+		redirect('home/show_tournament/'.$tournament_id);
 	}
 
 	// Ajout de matches
 	public function add_matches($tournament_id){
 		$data['tournament'] = $this->data_model->get_tournois($tournament_id);
+		$data['teams'] = $this->data_model->get_teams_tournament($tournament_id);
 		$this->load->view('add_matches', $data);
 	}
 

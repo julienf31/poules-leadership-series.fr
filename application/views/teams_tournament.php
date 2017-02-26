@@ -8,23 +8,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="utf-8">
     <title>Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-
   </head>
-
   <body>
   <div class="col-6">
     <form method="post" accept-charset="utf-8" action="<?php echo site_url('home/tournament_teams_list_b').'/'.$tournament['id']; ?>">
-      <?php for($i = 0; $i < $tournament['nbteams'] ;$i++): ?>
+      <?php for($i = 0; $i < intval($tournament['nbteams']) ;$i++): ?>
       <div class="form-group">
       <label for="nbteams">Equipe <?php echo $i+1; ?></label>
       <select class="custom-select" name="team-<?php echo $i+1; ?>">
+      // BUG DU UNIQUE
         <?php foreach ($teams as $key => $team): ?>
-            <option value="<?php echo $team['id'] ?>"><?php echo $team['name'] ?></option>
+            <option value="<?php echo $team['id'] ?>" <?php //if($team['id'] == intval($participants[$i]['team_id'])){ echo 'selected';} ?>><?php echo $team['name'] ?></option>
         <?php endforeach; ?>
       </select>
       </div>
        <?php endfor; ?>
-      <button type="submit" class="btn btn-success">Enregistrer</button>
+       <div class="row">
+          <a href="<?php echo site_url('home/show_tournament/').$tournament['id']; ?>" class="btn btn-danger">Retour</a>
+          <button type="submit" class="btn btn-success">Enregistrer</button>
+      </div>
     </form>
     </div>
 

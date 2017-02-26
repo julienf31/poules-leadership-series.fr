@@ -30,7 +30,7 @@ Pas de matchs dans ce tournoi
     <?php endforeach; ?>
 <?php endif; ?>
 <div class="row">
-    <a href="<?php echo site_url('home/add_matches'); ?>" class="btn btn-success">Ajouter un match</a>
+    <a href="<?php echo site_url('home/add_matches/').$tournament['id']; ?>" class="btn btn-success">Ajouter un match</a>
 </div>
 
 
