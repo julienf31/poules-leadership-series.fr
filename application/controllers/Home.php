@@ -96,4 +96,31 @@ class Home extends CI_Controller {
 		$this->data_model->inc_matches_count($tournament_id);
 		redirect('home/show_tournament/'.$tournament_id);
 	}
+
+	public function add_teams(){
+		$this->load->view('add_teams');
+	}
+
+	public function add_teams_b(){
+		$data = array(
+			'name' => $this->input->post('team'),
+			'owner' => 'julien'
+		);
+		$this->data_model->insert('team', $data);
+		redirect('home/index/');
+	}
+
+	public function delete_team($team_id){
+		$this->db->where('id', $team_id);
+		$this->db->from('team');
+		$this->db->delete();
+		redirect('home/index');
+	}
+
+	public function delete_tournament($tournament_id){
+		$this->db->where('id', $tournament_id);
+		$this->db->from('tournament');
+		$this->db->delete();
+		redirect('home/index');
+	}
 }
