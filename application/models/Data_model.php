@@ -31,6 +31,12 @@ Class Data_model extends CI_Model
     return $result;
   }
 
+  public function get_nb_teams_tournament($tournament_id){
+    $this->db->where('tournament_id', $tournament_id);
+    $result = $this->db->count_all_results('participants');
+    return $result;
+  }
+
   public function get_teams(){
     $result = $this->db->get('team');
     return $result->result_array();
@@ -74,6 +80,16 @@ Class Data_model extends CI_Model
   public function get_match($tournament_id){
     $this->db->from('match');
     $this->db->where('tournament_id', $tournament_id);
+    $query = $this->db->get();
+    return $query->result_array();
+  }
+
+  public function get_teams_tournament_id($tournament_id){
+    $this->db->select('team_id');
+    $this->db->where('tournament_id', $tournament_id);
+    $this->db->from('participants');
+    $this->db->group_by('team_id');
+    $this->db->join('team', 'team.id = participants.team_id');
     $query = $this->db->get();
     return $query->result_array();
   }

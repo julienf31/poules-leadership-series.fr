@@ -53,6 +53,7 @@ $route['default_controller'] = 'home';
 
 $route['show_tournament/([0-9]+)'] = 'home/show_tournament/$1';
 $route['add_matches/([0-9]+)'] = 'home/add_matches/$1';
+$route['launch_first_tournament/([0-9]+)'] = 'home/launch_first_tournament/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -11,6 +11,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </head>
   <body>
   <div class="col-6">
+  <?php if($tournament['nbteams']>$nbteams): ?>
+  <div class="alert alert-warning">Vous n'avez pas assez d'équipes pour créer ce tournois, creez d'abord des équipes pour lancer ce tournois !</div>
+  <?php else:?>
     <form method="post" accept-charset="utf-8" action="<?php echo site_url('home/tournament_teams_list_b').'/'.$tournament['id']; ?>">
       <?php for($i = 0; $i < intval($tournament['nbteams']) ;$i++): ?>
       <div class="form-group">
@@ -28,6 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <button type="submit" class="btn btn-success">Enregistrer</button>
       </div>
     </form>
+    <?php endif; ?>
     </div>
 
   </body>

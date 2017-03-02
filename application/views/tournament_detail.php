@@ -18,6 +18,7 @@
     <a href="<?php echo site_url('home/index'); ?>" class="btn btn-danger mx-3 my-3">Retour</a>
     <a href="<?php echo site_url('home/launch_tournament/').'/'.$tournament['id']; ?>" class="btn btn-warning mx-3 my-3">Lancer le tournois</a>
     <a href="<?php echo site_url('home/teams_tournament/').'/'.$tournament['id']; ?>" class="btn btn-info mx-3 my-3">Gestion des équipes</a>
+    <a href="<?php echo site_url('home/launch_first_tournament/').'/'.$tournament['id']; ?>" class="btn btn-secondary mx-3 my-3">Initialiser le premier tour</a>
 </div>
 
 <h3>Détail des matchs du tournois :</h3>

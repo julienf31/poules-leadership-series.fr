@@ -25,6 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <button type="submit" class="btn btn-success">Créer</button>
     </form>
     </div>
+    <a href="<?php echo site_url('home/show_tournament/').$tournament['id']; ?>" class="btn btn-danger">Retour</a>
     </div>
 
   </body>

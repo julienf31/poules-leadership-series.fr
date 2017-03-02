@@ -123,4 +123,16 @@ class Home extends CI_Controller {
 		$this->db->delete();
 		redirect('home/index');
 	}
+
+	public function launch_first_tournament($tournament_id){
+		$data['tournament'] = $this->data_model->get_tournois($tournament_id);
+		$data['teams'] = $this->data_model->get_teams_tournament_id($tournament_id);
+		$nbteams = $this->data_model->get_nb_teams_tournament($tournament_id);
+		for($i=0;$i<$nbteams;$i++){
+			$data['teams_after'][$i] = array_rand($data['teams']);
+			$data['teams_after2'][$i] = $data['teams'][$data['teams_after'][$i]]['team_id'];
+			unset($data['teams'][$data['teams_after'][$i]]);
+		}
+		$this->load->view('test', $data);
+	}
 }
